@@ -1,10 +1,11 @@
 class Direction
-  directions = [:north, :south, :east, :west]
-  def initialize(direction=nil)
-    @direction = direction if directions.include? direction
+  DIRECTIONS = ["NORTH", "SOUTH", "EAST", "WEST"]
+  def initialize(direction="NORTH")
+    raise ArgumentError unless DIRECTIONS.include? direction
+    @direction = direction 
   end
 
-  def direction
+  def to_s
     @direction
   end
 end
