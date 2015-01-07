@@ -19,13 +19,15 @@ class Simulator
       process_command line
     end
     f.close
+    puts "\n\n"
   end
 
   def self.process_command(command)
+    puts "#{command}"
     if /PLACE/.match(command)
       process_place command
     elsif /REPORT/.match(command)
-      puts "Result #{@robot.report}"
+      puts "#{@robot.report}"
     else
       eval "@robot.#{command.downcase}"
     end
