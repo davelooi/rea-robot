@@ -1,19 +1,17 @@
-require './direction'
-require './position'
+require './place'
 
 class Robot
-  def initialize(pos=nil, facing=nil)
-    @pos = pos
-    @facing = facing
+  def initialize(place=nil)
+    @place = place
   end
 
   def placed?
-    return false if @pos == nil
-    return false if @facing == nil
-    true
+    @place != nil
   end
 
   def report
-    return @pos, @facing
+    x,y = @place.coordinate
+    f = @place.direction
+    return x,y,f
   end
 end
