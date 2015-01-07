@@ -1,6 +1,8 @@
-class Position
+require './grid'
+
+class Position < Grid
   def initialize(x=0, y=0)
-    raise ArgumentError if x >= 5 || y >= 5
+    raise ArgumentError if x > MAX_X || y > MAX_Y
     @x = x
     @y = y
   end
@@ -8,4 +10,35 @@ class Position
   def coordinate
     return @x, @y
   end
+
+  def move_north
+    move(:north)
+  end
+  def move_east
+    move(:east)
+  end
+  def move_south
+    move(:south)
+  end
+  def move_west
+    move(:west)
+  end
+
+private
+
+  def move(option)
+    if option == :north
+      @y += 1 if @y < MAX_Y
+    elsif option == :east
+      @x += 1 if @x < MAX_X
+    elsif option == :south
+      @y -= 1 if @y > 0
+    elsif option == :west
+      @x -= 1 if @x > 0
+    else
+      # do nothing
+    end
+    self
+  end
+
 end
