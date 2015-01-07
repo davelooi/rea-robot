@@ -18,4 +18,18 @@ class Place
   def direction
     @direction.to_s
   end
+
+  def turn_left
+    @direction.turn_left
+    self
+  end
+
+  def turn_right
+    @direction.turn_right
+    self
+  end
+
+  def move
+    eval "@position.move_#{direction.downcase}"
+  end
 end

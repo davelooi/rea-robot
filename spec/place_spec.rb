@@ -15,4 +15,23 @@ describe Place do
     it { expect(place.coordinate).to eq [2,3] }
     it { expect(place.direction).to eq "EAST" }
   end
+
+  describe 'move' do
+    context 'east' do
+      let!(:place) { Place.new(2,3,"EAST") }
+      it 'should move forward facing the direction' do
+        expect(place.move.coordinate).to eq [3,3]
+      end
+    end
+  end
+
+  describe 'turn' do
+    context 'left' do
+      let!(:place) { Place.new(2,3,"EAST") }
+
+      it 'should turn left' do
+        expect(place.turn_left.direction).to eq "NORTH"
+      end
+    end
+  end
 end
