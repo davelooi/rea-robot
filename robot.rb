@@ -5,6 +5,10 @@ class Robot
     @place = place
   end
 
+  def place(place)
+    @place = place
+  end
+
   def placed?
     @place != nil
   end
@@ -12,6 +16,24 @@ class Robot
   def report
     x,y = @place.coordinate
     f = @place.direction
-    return x,y,f
+    "#{x},#{y},#{f}"
   end
+
+  def move
+    raise RobotError, "Robot not placed" unless placed?
+    @place.move
+  end
+
+  def left
+    raise RobotError, "Robot not placed" unless placed?
+    @place.turn_left
+  end
+
+  def right
+    raise RobotError, "Robot not placed" unless placed?
+    @place.turn_right
+  end
+end
+
+class RobotError < StandardError
 end
