@@ -2,8 +2,7 @@ require './robot'
 
 class Simulator
   def self.execute(file_args)
-    files = []
-    files << file_args
+    files = Array(file_args)
 
     files.each do |file|
       process_file file
@@ -14,6 +13,7 @@ class Simulator
     # new robot for every file
     @robot = Robot.new
 
+    puts "Executing #{file}"
     f = File.open(file, "r")
     f.each_line do |line|
       process_command line
@@ -25,7 +25,7 @@ class Simulator
     if /PLACE/.match(command)
       process_place command
     elsif /REPORT/.match(command)
-      puts @robot.report
+      puts "Result #{@robot.report}"
     else
       eval "@robot.#{command.downcase}"
     end
