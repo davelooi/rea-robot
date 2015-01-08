@@ -26,14 +26,18 @@ private
 
   def self.process_command(command)
     puts "#{command}"
-    if /PLACE/.match(command)
-      process_place command
-    elsif /REPORT/.match(command)
-      puts "#{@robot.report}"
-    elsif /MOVE|LEFT|RIGHT/.match(command)
-      eval "@robot.#{command.downcase}"
-    else
-      raise ArgumentError, "Invalid Command"
+    begin
+      if /PLACE/.match(command)
+        process_place command
+      elsif /REPORT/.match(command)
+        puts "#{@robot.report}"
+      elsif /MOVE|LEFT|RIGHT/.match(command)
+        eval "@robot.#{command.downcase}"
+      else
+        raise ArgumentError, "Invalid Command"
+      end
+    rescue RobotNotPlacedError
+      puts "Robot has not been placed!!"
     end
   end
 
