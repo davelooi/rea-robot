@@ -32,9 +32,9 @@ private
     elsif option == :east
       @x += 1 if @x < MAX_X
     elsif option == :south
-      @y -= 1 if @y > 0
+      @y -= 1 if @y > MIN_Y
     elsif option == :west
-      @x -= 1 if @x > 0
+      @x -= 1 if @x > MIN_X
     else
       # do nothing
     end
