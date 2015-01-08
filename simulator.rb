@@ -9,6 +9,8 @@ class Simulator
     end
   end
 
+private
+
   def self.process_file(file)
     # new robot for every file
     @robot = Robot.new
