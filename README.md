@@ -27,6 +27,5 @@ Toy Robot Simulator
     RIGHT
     REPORT
 
-x and y are integers (0..4)
-DIRECTION could be NORTH, SOUTH, EAST, WEST
- 
+- x and y are integers (0..4)
+- DIRECTION could be NORTH, SOUTH, EAST, WEST
