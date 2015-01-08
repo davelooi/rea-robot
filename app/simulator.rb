@@ -25,6 +25,12 @@ private
   end
 
   def self.process_command(command)
+    # remove whitespace
+    command.strip!
+
+    # blank line, nothing to process
+    return if command.empty?
+
     puts "#{command}"
     begin
       if /PLACE/.match(command)
