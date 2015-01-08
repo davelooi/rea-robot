@@ -14,6 +14,7 @@ class Robot
   end
 
   def report
+    raise RobotError, "Robot not placed" unless placed?
     x,y = @place.coordinate
     f = @place.direction
     "#{x},#{y},#{f}"
