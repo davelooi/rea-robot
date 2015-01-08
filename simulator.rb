@@ -28,15 +28,19 @@ class Simulator
       process_place command
     elsif /REPORT/.match(command)
       puts "#{@robot.report}"
-    else
+    elsif /MOVE|LEFT|RIGHT/.match(command)
       eval "@robot.#{command.downcase}"
+    else
+      raise ArgumentError, "Invalid Command"
     end
   end
 
   def self.process_place(command)
-    arg = command.split(' ')
-    params = arg[1].split(',')
-    place = Place.new(params[0].to_i,params[1].to_i,params[2])
+    matched = /PLACE (?<x>\d+),(?<y>\d+),(?<f>\w+)/.match(command)
+    x = matched[:x].to_i
+    y = matched[:y].to_i
+    f = matched[:f]
+    place = Place.new(x,y,f)
     @robot.place(place)
   end
 end
