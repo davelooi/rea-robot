@@ -1,5 +1,4 @@
-require './direction'
-require './position'
+require './application.rb'
 
 class Place
   def initialize(x=0, y=0, f="NORTH")

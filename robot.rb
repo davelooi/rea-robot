@@ -1,4 +1,4 @@
-require './place'
+require './application.rb'
 
 class Robot
   def initialize(place=nil)

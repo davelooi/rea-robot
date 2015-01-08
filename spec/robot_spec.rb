@@ -1,4 +1,4 @@
-require './robot'
+require './spec/spec_helper'
 
 describe Robot do
   context 'new robot without place' do

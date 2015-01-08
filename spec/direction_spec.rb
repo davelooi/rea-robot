@@ -1,4 +1,4 @@
-require './direction'
+require './spec/spec_helper'
 
 describe Direction do
   context 'new' do

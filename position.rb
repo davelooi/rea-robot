@@ -1,4 +1,4 @@
-require './grid'
+require './application.rb'
 
 class Position < Grid
   def initialize(x=0, y=0)

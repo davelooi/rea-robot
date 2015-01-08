@@ -1,4 +1,4 @@
-require './simulator'
+require './spec/spec_helper'
 
 describe Simulator do
   context 'new' do

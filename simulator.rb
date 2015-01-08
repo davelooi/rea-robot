@@ -1,4 +1,4 @@
-require './robot'
+require './application.rb'
 
 class Simulator
   def self.execute(file_args)

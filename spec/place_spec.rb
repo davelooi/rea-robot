@@ -1,4 +1,4 @@
-require './place'
+require './spec/spec_helper'
 
 describe Place do
   context 'new default' do

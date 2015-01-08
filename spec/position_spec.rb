@@ -1,4 +1,4 @@
-require './position'
+require './spec/spec_helper'
 
 describe Position do
   context 'new' do
