@@ -6,9 +6,9 @@ describe Robot do
 
     it { expect(robot.class).to eq Robot }
     it { expect(robot.placed?).to eq false }
-    it { expect{robot.move}.to raise_error RobotError }
-    it { expect{robot.left}.to raise_error RobotError }
-    it { expect{robot.right}.to raise_error RobotError }
+    it { expect{robot.move}.to raise_error RobotNotPlacedError }
+    it { expect{robot.left}.to raise_error RobotNotPlacedError }
+    it { expect{robot.right}.to raise_error RobotNotPlacedError }
   end
 
   context 'new robot with place' do

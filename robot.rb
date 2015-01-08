@@ -14,27 +14,30 @@ class Robot
   end
 
   def report
-    raise RobotError, "Robot not placed" unless placed?
+    raise RobotNotPlacedError, "Robot not placed" unless placed?
     x,y = @place.coordinate
     f = @place.direction
     "#{x},#{y},#{f}"
   end
 
   def move
-    raise RobotError, "Robot not placed" unless placed?
+    raise RobotNotPlacedError, "Robot not placed" unless placed?
     @place.move
   end
 
   def left
-    raise RobotError, "Robot not placed" unless placed?
+    raise RobotNotPlacedError, "Robot not placed" unless placed?
     @place.turn_left
   end
 
   def right
-    raise RobotError, "Robot not placed" unless placed?
+    raise RobotNotPlacedError, "Robot not placed" unless placed?
     @place.turn_right
   end
 end
 
 class RobotError < StandardError
+end
+
+class RobotNotPlacedError < RobotError
 end
