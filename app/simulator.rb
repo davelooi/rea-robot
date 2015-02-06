@@ -35,6 +35,8 @@ private
     begin
       if /PLACE/.match(command)
         process_place command
+      elsif /PLACE_OBJECT/.match(command)
+        process_place_object command
       elsif /REPORT/.match(command)
         puts "#{@robot.report}"
       elsif /MOVE|LEFT|RIGHT/.match(command)
@@ -48,11 +50,18 @@ private
   end
 
   def self.process_place(command)
-    matched = /PLACE (?<x>\d+),(?<y>\d+),(?<f>\w+)/.match(command)
+    matched = /\w+ (?<x>\d+),(?<y>\d+),(?<f>\w+)/.match(command)
     x = matched[:x].to_i
     y = matched[:y].to_i
     f = matched[:f]
     place = Place.new(x,y,f)
     @robot.place(place)
+  end
+
+  def self.process_place_object(command)
+    matched = /\w+ (?<x>\d+),(?<y>\d+)/.match(command)
+    x = matched[:x].to_i
+    y = matched[:y].to_i
+    place_obstacle(x,y)
   end
 end
