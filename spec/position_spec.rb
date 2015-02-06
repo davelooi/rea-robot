@@ -52,4 +52,13 @@ describe Position do
       it { expect(position.move_west.coordinate).to eq [0,4] }
     end
   end
+
+  describe 'blocked by obstacle' do
+    let!(:position) { Position.new(0,0) }
+
+    it 'should stay at the same place if blocked by obstacle' do
+      position.place_obstacle(0,1)
+      expect(position.move_north.coordinate).to eq [0,0]
+    end
+  end
 end
