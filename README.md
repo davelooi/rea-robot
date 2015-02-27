@@ -3,8 +3,8 @@ Toy Robot Simulator
 
 ## Installation Instruction
 
-    git clone https://github.com/davelooi/rea-robot.git
-    cd rea-robot
+    git clone https://github.com/davelooi/toy-robot.git
+    cd toy-robot
     bundle install
 
 ## RSpec Instruction
