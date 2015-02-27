@@ -35,8 +35,6 @@ private
       @y -= 1 if @y > MIN_Y
     elsif option == :west
       @x -= 1 if @x > MIN_X
-    else
-      # do nothing
     end
     self
   end
