@@ -51,6 +51,11 @@ private
     y = matched[:y].to_i
     f = matched[:f]
     place = Place.new(x,y,f)
-    @robot = Robot.new(place)
+    place_robot(place)
+  end
+
+  def self.place_robot(place)
+    # create new robot if nil, else just re-place the robot
+    @robot.nil? ? @robot = Robot.new(place) : @robot.place(place)
   end
 end
