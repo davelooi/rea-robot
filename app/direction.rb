@@ -1,12 +1,13 @@
 class Direction
   DIRECTIONS = ["NORTH", "EAST", "SOUTH", "WEST"]
+
   def initialize(direction="NORTH")
     raise ArgumentError unless DIRECTIONS.include? direction
-    @direction = direction 
+    @index = DIRECTIONS.index(direction)
   end
 
   def to_s
-    @direction
+    DIRECTIONS[@index]
   end
 
   def turn_left
@@ -20,13 +21,11 @@ class Direction
 private
 
   def turn(option)
-    index = DIRECTIONS.index(@direction)
     if option == :left
-      index -= 1
+      @index -= 1
     else
-      index = (index + 1) % 4
+      @index = (@index + 1) % 4
     end
-    @direction = DIRECTIONS[index]
   end
 
 end
