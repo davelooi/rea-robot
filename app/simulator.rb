@@ -13,7 +13,7 @@ private
 
   def self.process_file(file)
     # new robot for every file
-    @robot = Robot.new
+    @robot = nil
 
     puts "Executing #{file}"
     f = File.open(file, "r")
@@ -32,18 +32,16 @@ private
     return if command.empty?
 
     puts "#{command}"
-    begin
-      if /PLACE/.match(command)
-        process_place command
-      elsif /REPORT/.match(command)
-        puts "#{@robot.report}"
-      elsif /MOVE|LEFT|RIGHT/.match(command)
-        eval "@robot.#{command.downcase}"
-      else
-        raise ArgumentError, "Invalid Command"
-      end
-    rescue RobotNotPlacedError
-      puts "Robot has not been placed!!"
+    if /PLACE/.match(command)
+      process_place command
+    elsif /REPORT/.match(command)
+      return if @robot.nil?
+      puts "#{@robot.report}"
+    elsif /MOVE|LEFT|RIGHT/.match(command)
+      return if @robot.nil?
+      eval "@robot.#{command.downcase}"
+    else
+      raise ArgumentError, "Invalid Command"
     end
   end
 
@@ -53,6 +51,6 @@ private
     y = matched[:y].to_i
     f = matched[:f]
     place = Place.new(x,y,f)
-    @robot.place(place)
+    @robot = Robot.new(place)
   end
 end
