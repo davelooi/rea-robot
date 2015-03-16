@@ -2,20 +2,13 @@ require './spec/spec_helper'
 
 describe Robot do
   context 'new robot without place' do
-    let!(:robot) { Robot.new }
-
-    it { expect(robot.class).to eq Robot }
-    it { expect(robot.placed?).to eq false }
-    it { expect{robot.move}.to raise_error RobotNotPlacedError }
-    it { expect{robot.left}.to raise_error RobotNotPlacedError }
-    it { expect{robot.right}.to raise_error RobotNotPlacedError }
+    it { expect{Robot.new}.to raise_error ArgumentError }
   end
 
   context 'new robot with place' do
     let!(:place) { Place.new(1,2,"NORTH") }
     let!(:robot) { Robot.new(place) }
 
-    it { expect(robot.placed?).to eq true }
     it { expect(robot.report).to eq "1,2,NORTH" }
   end
 
